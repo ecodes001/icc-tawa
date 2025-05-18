@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICC-Tawa | Connecting · Challenging · Changing</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <div id="preloader" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <img src="assets/logo.png" alt="ICC-Tawa Logo" class="preloader-logo" />
+      <span class="preloader-loading-row" style="display:flex;flex-direction:row;align-items:center;justify-content:center;margin-top:1.2rem;">
+        <span class="preloader-loading">Loading</span>
+        <span class="preloader-dot-group" style="display:flex;gap:0.3rem;margin-left:0.5rem;">
+          <span class="preloader-dot"></span>
+          <span class="preloader-dot"></span>
+          <span class="preloader-dot"></span>
+        </span>
+      </span>
+    </div>
+    <header>
+      <div class="logo">
+        <img src="assets/logo.png" alt="ICC-Tawa Logo" />
+        <h1>ICC-Tawa</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="sermons.html">Sermons</a></li>
+          <li><a href="ministries.html">Ministries</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="give.html" class="donate-btn">Give</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>Connecting · Challenging · Changing</h2>
+      <p>Welcome to Tawa Christian Centre Church</p>
+      <a href="about.html" class="cta">Learn More</a>
+    </section>
+
+    <section class="gallery-section card" style="margin:2rem auto;max-width:700px;text-align:center;">
+      <div style="font-size:1.2rem;font-weight:600;color:var(--primary);margin-bottom:1rem;">Moments at the Church</div>
+      <div style="position:relative;width:100%;max-height:350px;overflow:hidden;">
+        <img id="random-gallery-img" src="assets/1.jpg" alt="Church Gallery" style="width:100%;max-height:350px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);margin-bottom:1rem;position:absolute;left:0;top:0;transition:opacity 0.7s;cursor:pointer;" onclick="openGalleryModal()" />
+      </div>
+    </section>
+    <div id="gallery-modal" style="display:none;position:fixed;z-index:10000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
+      <span onclick="closeGalleryModal()" style="position:absolute;top:30px;right:40px;font-size:2.5rem;color:#fff;cursor:pointer;font-weight:bold;z-index:10001;">&times;</span>
+      <img id="gallery-modal-img" src="" alt="View" style="max-width:90vw;max-height:80vh;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.25);border:6px solid #fff;" />
+    </div>
+
+    <section class="about card" style="margin-top:2rem;">
+      <h3>Who We Are</h3>
+      <p>We are a Christ-centered church based in Tawa, committed to transforming lives through worship, teaching, and outreach.</p>
+    </section>
+
+    <section class="highlights" style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;margin:2rem 0;">
+      <div class="card" style="flex:1 1 250px;max-width:320px;">
+        <h3>Vibrant Worship</h3>
+        <p>Experience uplifting worship and praise every Sunday.</p>
+      </div>
+      <div class="card" style="flex:1 1 250px;max-width:320px;">
+        <h3>Community Outreach</h3>
+        <p>We serve our community through various outreach programs and charity events.</p>
+      </div>
+      <div class="card" style="flex:1 1 250px;max-width:320px;">
+        <h3>Family Ministries</h3>
+        <p>Ministries for children, youth, and adults to grow in faith together.</p>
+      </div>
+    </section>
+
+    <section class="sermon-preview card" style="margin-bottom:2rem;">
+      <h3>Latest Sermon</h3>
+      <iframe width="100%" height="315" src="https://www.youtube.com/embed/sample" frameborder="0" allowfullscreen style="border-radius:12px;"></iframe>
+    </section>
+    <script>
+      const galleryImages = [
+        'assets/1.jpg','assets/2.jpg','assets/3.jpg','assets/4.jpg','assets/5.jpg','assets/6.jpg','assets/7.jpg','assets/8.jpg','assets/9.jpg','assets/10.jpg','assets/11.jpg','assets/12.jpg','assets/13.jpg','assets/14.jpg'
+      ];
+      let currentGalleryIndex = 0;
+      let galleryImg = document.getElementById('random-gallery-img');
+      function showNextGalleryImage() {
+        galleryImg.style.opacity = '0';
+        setTimeout(() => {
+          currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+          galleryImg.src = galleryImages[currentGalleryIndex];
+          galleryImg.onload = () => {
+            galleryImg.style.opacity = '1';
+          };
+        }, 700);
+      }
+      setInterval(showNextGalleryImage, 3500);
+
+      function openGalleryModal() {
+        const img = document.getElementById('random-gallery-img');
+        const modal = document.getElementById('gallery-modal');
+        const modalImg = document.getElementById('gallery-modal-img');
+        modalImg.src = img.src;
+        modal.style.display = 'flex';
+      }
+      function closeGalleryModal() {
+        document.getElementById('gallery-modal').style.display = 'none';
+      }
+    </script>
+
+    <footer>
+      <p>&copy; 2025 ICC-Tawa | International Christian Centre – Tawa</p>
+      <p style="font-size:0.95rem;color:#888;margin-top:0.3rem;">Powered by eCODES</p>
+    </footer>
+
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.getElementById('preloader').style.display = 'none';
+        }, 8000);
+      });
+    </script>
+  </body>
+</html>
